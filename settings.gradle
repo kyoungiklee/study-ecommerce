@@ -1,3 +1,13 @@
 rootProject.name = 'study-ecommerce'
 include 'goods-service'
 include 'common'
+include 'marketing-service'
+include 'order-service'
+include 'display-service'
+include 'payment-service'
+include 'member-service'
+include 'delivery-service'
+include 'promotion-service'
+include 'review-service'
+include 'search-service'
+
