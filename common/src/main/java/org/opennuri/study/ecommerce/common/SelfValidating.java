@@ -1,5 +1,7 @@
 package org.opennuri.study.ecommerce.common;
 
+import jakarta.validation.*;
+
 import java.util.Set;
 
 

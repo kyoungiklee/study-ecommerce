@@ -15,27 +15,55 @@ import java.time.LocalDateTime;
 
 public class ItemClassification {
     // 아이템 분류 코드 아이디
-    private  Long itemClassificationCodeId;
-
+    private  final Long itemClassificationCodeId;
     // 아이템 parent 코드
-    private  String itemClassCodeParent;
-
+    private  final String itemClassCodeParent;
     // 아이템 child 코드
-    private  String itemClassCodeChild;
-
+    private  final String itemClassCodeChild;
     // 아이템 분류 코드 depth
-    private  Integer itemClassCodeDepth;
-
+    private  final Integer itemClassCodeDepth;
     // 아이템 분류 코드 명
-    private  String itemClassCodeName;
+    private  final String itemClassCodeName;
+    // 아이템 분류 코드 설명
+    private  final String itemClassCodeDescription;
 
     // 생성자
-    private  String createdBy;
-    // 생성 일시
-    private  LocalDateTime createdDateTime;
-    // 수정자
-    private  String lastModifiedBy;
-    // 수정 일시
-    private  LocalDateTime lastModifiedDateTime;
+    public static ItemClassification from(
+            ItemClassificationCodeId itemClassificationCodeId,
+            ItemClassCodeParent itemClassCodeParent,
+            ItemClassCodeChild itemClassCodeChild,
+            ItemClassCodeDepth itemClassCodeDepth,
+            ItemClassCodeName itemClassCodeName,
+            ItemClassCodeDescription itemClassCodeDescription
+    ) {
+        return new ItemClassification(
+                itemClassificationCodeId.itemClassificationCodeId(),
+                itemClassCodeParent.itemClassCodeParent(),
+                itemClassCodeChild.itemClassCodeChild(),
+                itemClassCodeDepth.itemClassCodeDepth(),
+                itemClassCodeName.itemClassCodeName(),
+                itemClassCodeDescription.itemClassCodeDescription()
+        );
+    }
+
+    public record ItemClassificationCodeId(Long itemClassificationCodeId) {}
+    public record ItemClassCodeParent(String itemClassCodeParent) {}
+    public record ItemClassCodeChild(String itemClassCodeChild) {}
+    public record ItemClassCodeDepth(Integer itemClassCodeDepth) {}
+    public record ItemClassCodeName(String itemClassCodeName) {}
+    public record ItemClassCodeDescription(String itemClassCodeDescription) {}
+
+
+    public static void main(String[] args) {
+        ItemClassification itemClassification = ItemClassification.from(
+                new ItemClassificationCodeId(1L),
+                new ItemClassCodeParent("1"),
+                new ItemClassCodeChild("1"),
+                new ItemClassCodeDepth(1),
+                new ItemClassCodeName("1"),
+                new ItemClassCodeDescription("1")
+        );
+        System.out.println(itemClassification);
+    }
 
 }

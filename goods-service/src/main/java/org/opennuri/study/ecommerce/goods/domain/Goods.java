@@ -59,7 +59,7 @@ public class Goods {
     private final String goodsOnDisplayEndDateTime;
 
     // 아이템 전시 카테고리
-    private final GoodsDisplayCategory itemDisplayCategory;
+    private final DisplayCategory itemDisplayCategory;
 
     // 상품 전시 이미지들
     private final List<GoodsDisplayImage> goodsDisplayImages;

@@ -1,10 +1,12 @@
 package org.opennuri.study.ecommerce.goods.domain;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;;
+import lombok.AllArgsConstructor;
+import lombok.Getter;;
 
 import java.time.LocalDateTime;
 
+@Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ItemImage {
     // 아이템 이미지 식별자
@@ -20,14 +22,6 @@ public class ItemImage {
     // 아이템 이미지 설명 (alt text로 사용됨)
     private final String itemImageDescription;
 
-    // 레코드 생성자
-    private final String createdBy;
-    // 레코드 생성 일시
-    private final LocalDateTime createdDateTime;
-    // 레코드 마지막 수정자
-    private final String lastModifiedBy;
-    // 레코드 마지막 수정 일시
-    private final LocalDateTime lastModifiedDateTime;
 
     public static ItemImage from(
             ItemImage.ItemImageId itemImageId,
@@ -35,11 +29,7 @@ public class ItemImage {
             ItemImage.ItemImageDisplayOrder itemImageDisplayOrder,
             ItemImage.ItemImageUrl itemImageUrl,
             ItemImage.ItemImageName itemImageName,
-            ItemImage.ItemImageDescription itemImageDescription,
-            ItemImage.CreatedBy createdBy,
-            ItemImage.CreatedDateTime createdDateTime,
-            ItemImage.LastModifiedBy lastModifiedBy,
-            ItemImage.LastModifiedDateTime lastModifiedDateTime
+            ItemImage.ItemImageDescription itemImageDescription
     ) {
         return new ItemImage(
                 itemImageId.itemImageId(),
@@ -47,27 +37,15 @@ public class ItemImage {
                 itemImageDisplayOrder.itemImageDisplayOrder(),
                 itemImageUrl.itemImageUrl(),
                 itemImageName.itemImageName(),
-                itemImageDescription.itemImageDescription(),
-                createdBy.createdBy(),
-                createdDateTime.createdDateTime(),
-                lastModifiedBy.lastModifiedBy(),
-                lastModifiedDateTime.lastModifiedDateTime()
+                itemImageDescription.itemImageDescription()
         );
     }
 
-    public record ItemImageId(Long itemImageId) {
-        public static ItemImageId from(Long itemImageId) {
-            return new ItemImageId(itemImageId);
-        }
-    }
+    public record ItemImageId(Long itemImageId) {}
     public record ItemId(Long itemId) {}
     public record ItemImageDisplayOrder(Integer itemImageDisplayOrder) {}
     public record ItemImageUrl(String itemImageUrl) {}
     public record ItemImageName(String itemImageName) {}
     public record ItemImageDescription(String itemImageDescription) {}
-    public record CreatedBy(String createdBy) {}
-    public record CreatedDateTime(LocalDateTime createdDateTime) {}
-    public record LastModifiedBy(String lastModifiedBy) {}
-    public record LastModifiedDateTime(LocalDateTime lastModifiedDateTime) {}
 
 }
